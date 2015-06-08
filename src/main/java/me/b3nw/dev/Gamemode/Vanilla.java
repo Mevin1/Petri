@@ -5,6 +5,7 @@ import me.b3nw.dev.Events.EventHandle;
 import me.b3nw.dev.Events.GameEvent;
 import me.b3nw.dev.Events.NickAnnounceEvent;
 import me.b3nw.dev.Session.Blobs.Blob;
+import me.b3nw.dev.Session.GameMap;
 import net.sf.jsi.rtree.RTree;
 
 import java.util.HashMap;
@@ -13,12 +14,14 @@ import java.util.HashMap;
 public class Vanilla implements Gamemode {
 
     private final RTree blobTree;
+    private final GameMap map;
     private HashMap<Integer, Blob> blobMap = new HashMap<>();
     private int lastId = 0;
 
     public Vanilla() {
         this.blobTree = new RTree();
         blobTree.init(null);
+        this.map = new GameMap(0, 0, 1000, 1000);
 
     }
 
