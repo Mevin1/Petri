@@ -9,12 +9,10 @@ import me.b3nw.dev.Events.NickAnnounceEvent;
 public class Vanilla extends Gamemode {
 
     @EventHandle(type = EventHandle.Type.NICKANNOUNCE)
-    public boolean nickAnnounce(GameEvent evt) {
+    public void nickAnnounce(GameEvent evt) {
         NickAnnounceEvent nickAnnounce = (NickAnnounceEvent) evt;
 
         log.info("[" + nickAnnounce.getCtx().channel().remoteAddress() + "] using name " + nickAnnounce.getNick());
-
-        return true;
     }
 
 }
