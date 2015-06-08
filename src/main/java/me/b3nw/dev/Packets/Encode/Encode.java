@@ -16,7 +16,7 @@ public abstract class Encode {
         this.data.writeByte(id);
     }
 
-    protected BinaryWebSocketFrame Encode() {
+    public BinaryWebSocketFrame encode() {
         if (Encoder()) {
             return new BinaryWebSocketFrame(data);
         } else {

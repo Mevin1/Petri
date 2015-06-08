@@ -13,6 +13,7 @@ public class Vanilla extends Gamemode {
         NickAnnounceEvent nickAnnounce = (NickAnnounceEvent) evt;
 
         log.info("[" + nickAnnounce.getCtx().channel().remoteAddress() + "] using name " + nickAnnounce.getNick());
+
     }
 
 }
