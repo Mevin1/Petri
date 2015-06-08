@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import me.b3nw.dev.Gamemode.Gamemode;
 import me.b3nw.dev.Gamemode.Vanilla;
 import me.b3nw.dev.Handlers.SetupHandler;
+import me.b3nw.dev.Session.GameSession;
 
 @Slf4j
 public class Petri {
@@ -32,7 +33,7 @@ public class Petri {
         channelHasPlayer = AttributeKey.newInstance("ChannelHasPlayer"); //New key to track if currently playing
         channelGamemode = AttributeKey.newInstance("ChannelGamemode"); //New key to set the gamemode
 
-        Vanilla vanilla = new Vanilla();
+        Vanilla vanilla = new Vanilla(new GameSession());
 
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
