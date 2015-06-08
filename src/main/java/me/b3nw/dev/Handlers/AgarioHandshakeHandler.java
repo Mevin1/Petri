@@ -6,7 +6,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
 import lombok.extern.slf4j.Slf4j;
 import me.b3nw.dev.Exceptions.HandshakeException;
-import me.b3nw.dev.Gamemode.Vanilla;
+import me.b3nw.dev.Petri;
 
 import java.nio.ByteOrder;
 
@@ -56,7 +56,7 @@ public class AgarioHandshakeHandler extends ChannelHandlerAdapter {
 
             if (shake1 && shake2) {
                 ctx.channel().pipeline().replace(this, "PacketDecoder", new PacketDecodeHandler());
-                ctx.channel().pipeline().addAfter("PacketDecoder", "GamemodeHandler", new GamemodeHandler(new Vanilla()));
+                ctx.channel().pipeline().addAfter("PacketDecoder", "GamemodeHandler", new GamemodeHandler(ctx.attr(Petri.channelGamemode).get()));
 
                 //TODO Loading of gamelogic can go here
 

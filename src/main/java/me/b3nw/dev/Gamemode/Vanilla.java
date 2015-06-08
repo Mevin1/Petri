@@ -6,14 +6,17 @@ import me.b3nw.dev.Events.GameEvent;
 import me.b3nw.dev.Events.NickAnnounceEvent;
 
 @Slf4j
-public class Vanilla extends Gamemode {
+public class Vanilla implements Gamemode {
 
     @EventHandle(type = EventHandle.Type.NICKANNOUNCE)
     public void nickAnnounce(GameEvent evt) {
         NickAnnounceEvent nickAnnounce = (NickAnnounceEvent) evt;
 
         log.info("[" + nickAnnounce.getCtx().channel().remoteAddress() + "] using name " + nickAnnounce.getNick());
-
     }
 
+    @Override
+    public void runTick() {
+
+    }
 }

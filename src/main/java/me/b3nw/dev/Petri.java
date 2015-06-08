@@ -13,12 +13,15 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
+import me.b3nw.dev.Gamemode.Gamemode;
+import me.b3nw.dev.Gamemode.Vanilla;
 import me.b3nw.dev.Handlers.SetupHandler;
 
 @Slf4j
 public class Petri {
 
     public static AttributeKey<Boolean> channelHasPlayer;
+    public static AttributeKey<Gamemode> channelGamemode;
 
     public static void main(String[] args) {
         log.info("Starting Petri!");
@@ -27,6 +30,9 @@ public class Petri {
         EventLoopGroup workGrp = new EpollEventLoopGroup();
 
         channelHasPlayer = AttributeKey.newInstance("ChannelHasPlayer"); //New key to track if currently playing
+        channelGamemode = AttributeKey.newInstance("ChannelGamemode"); //New key to set the gamemode
+
+        Vanilla vanilla = new Vanilla();
 
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
@@ -46,6 +52,8 @@ public class Petri {
                                     new SetupHandler());
 
                             ch.attr(channelHasPlayer).set(false); //No one is playing on this channel quite yet ;)
+                            ch.attr(channelGamemode).set(vanilla); //Set the gamemode (Currently vanilla)
+                            //TODO Allow multiple servers and be able to set their gamemode
                         }
                     });
 
