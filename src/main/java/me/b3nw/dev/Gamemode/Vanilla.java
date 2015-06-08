@@ -36,6 +36,8 @@ public class Vanilla implements Gamemode {
         log.info("[" + nickAnnounce.getCtx().channel().remoteAddress() + "] using name " + nickAnnounce.getNick());
 
         addBlob(new Player(lastId++, 500, 500, 50, nickAnnounce.getNick()));
+
+        //TODO add player to Player group in the channel pipeline
     }
 
     @Override
