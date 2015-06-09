@@ -33,10 +33,7 @@ public abstract class Decode {
         boolean decode = decode();
         boolean handle = handle();
 
-        if (decode && handle)
-            return true;
-        else
-            return false;
+        return decode && handle;
     }
 
     private void addPlayerGroup2(PlayerGroup playerGroup) {
